@@ -41,3 +41,5 @@ microstack.openstack keypair list
 
 
 sudo snap disable microstack
+
+
