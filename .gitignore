@@ -172,3 +172,41 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+
+
+# Arquivos locais de estado do Terraform
+terraform.tfstate
+terraform.tfstate.backup
+terraform.tfstate.*
+
+# Diretórios locais
+.terraform/
+.terraform.lock.hcl
+
+# Planos de execução
+*.tfplan
+
+# Logs e arquivos temporários
+crash.log
+*.log
+
+# Variáveis sensíveis
+*.tfvars
+*.tfvars.json
+
+# Arquivos de override locais
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*~
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
