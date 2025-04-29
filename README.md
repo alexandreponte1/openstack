@@ -40,6 +40,36 @@ microstack.openstack keypair list
 
 
 
+
+
+
+
+#
+#!/usr/bin/env bash
+
+servers=($(openstack --os-compute-api-version 2 server list -f json | jq -cr '.[] | .Name' | sort))
+
+for server in "${servers[@]}"
+do
+    openstack --os-compute-api-version 2 server show "$server" -f json \
+        | jq -r '[.name,
+                (.addresses|to_entries|map(.key)| .[0]),
+                (.tags[]|select(match("RoleType"))),
+                ."OS-EXT-AZ:availability_zone",
+                (.tags[]|select(match("Image")))
+                ] | @csv'
+done
+
+#
+./get_server_info.sh | tee tmcsre_sap_cloud_infrastructure_inventory.csv
+
+#
+
+
+#
+
+
+
 sudo snap disable microstack
 
 
